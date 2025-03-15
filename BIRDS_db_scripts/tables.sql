@@ -8,6 +8,7 @@ drop table photos;
 drop table locations; 
 drop table nicknames; 
 drop table birds; 
+
 create table birds 
 (bird_id decimal(3) not null primary key, # primary key
 bird_name varchar(30) not null unique,
