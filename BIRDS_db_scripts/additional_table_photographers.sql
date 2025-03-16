@@ -1,4 +1,4 @@
-# Drop the tables if they already exist. The order presented takes into account parent/child relationships and ensures that they can be dropped 
+# Drop the tables if they already exist. 
 DROP TABLE IF EXISTS camera_sensors;
 DROP TABLE IF EXISTS photographer_cameras;
 DROP TABLE IF EXISTS cameras;
