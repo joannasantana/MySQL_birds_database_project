@@ -9,14 +9,16 @@ tables.sql and data.sql
 - Original code edits to make it compatible with MySQL.
 
 additional_table_photographers.sql
-- Original code that adds the following 4 tables to the database
+- Original code demonstrating Data Definition Language (DDL)
+- Adds the following 4 tables to the database
     - photographers 
     - photographer_cameras
     - cameras 
     - camera_sensors
 
 modifying_tables.sql
-- Original code that adds a photographer_id column to the photos table and references the new Photographers table
+- Original code demonstrating Data Definition Language (DDL).
+- Adds a photographer_id column to the photos table and references the new Photographers table.
 
 data_manipulation.sql
 - Original code demonstrating Data Modifying Language (DML).
@@ -29,4 +31,8 @@ data_manipulation.sql
     - The data in this table was manipulated using INSERT INTO, UPDATE, and DELETE. 
     - Demonstrated the consequences of not using a WHERE clause during updating and deleting.
 
+managing_transactions.sql
+- Original code demonstrating how to manage transactions in MySQL by disabling autocommit mode and using savepoints, rollbacks, and commits. 
+- Highlights how transactional control only affects DML not DDL.
+- Adds two new tables (big_birds, locations2) to the database to use solely for transactional control demonstration.
 
