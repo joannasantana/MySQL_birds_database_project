@@ -34,6 +34,11 @@ ISO_Range SMALLINT,
 Cost DECIMAL(6,2)
 );
 
+# Modifying photographers to add the foreign key relating Mentor_Id to Photographer_Id
+ALTER TABLE photographers
+ADD CONSTRAINT photographers_fk1 FOREIGN KEY (Mentor_ID) REFERENCES photographers (Photographer_Id)
+;
+
 # Modifying photographer_cameras to add the foreign key relating Camera_Id to the primary key in the cameras table
 ALTER TABLE photographer_cameras
 ADD CONSTRAINT photographer_cameras_fk2 FOREIGN KEY (Camera_Id) REFERENCES cameras (Camera_Id)

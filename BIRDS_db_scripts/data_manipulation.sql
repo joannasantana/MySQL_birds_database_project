@@ -29,6 +29,21 @@ WHERE Photographer_Id = 2
 
 SELECT * FROM photographers;
 
+# Insert more records into the photographers table
+INSERT INTO photographers
+	(Photographer_ID, Photographer_Name, Mentor_Id)
+VALUES 
+	(NULL, 'Ryan Notstephens', NULL),
+    (NULL, 'Susan Williamson', NULL),
+    (NULL, 'Mark Fife', NULL),
+    (NULL, 'Shooter McGavin', NULL),
+    (NULL, 'Jenny Forest', 8),
+    (NULL, 'Steve Hamm', NULL),
+    (NULL, 'Harry Henderson', 2),
+    (NULL, 'Kelly Hairtrigger', 8),
+    (NULL, 'Gordon Flash', NULL),
+    (NULL, 'Kate Kapteur', 7);
+
 # Create a table called short_birds using data from the birds table
 DROP TABLE IF EXISTS short_birds;
 
