@@ -121,3 +121,52 @@ SELECT * FROM tall_birds;
 DELETE FROM tall_birds;
 
 SELECT * FROM tall_birds;
+
+# Truncate the above_avg_birds table to remove any existing data
+TRUNCATE TABLE above_avg_birds;
+
+SELECT *
+FROM above_avg_birds;
+
+# Using subqueries, insert rows into the above_avg_birds table of birds with above average height, weight, and wingspan
+INSERT INTO above_avg_birds
+SELECT bird_id, bird_name, wingspan, height, weight
+FROM birds
+WHERE wingspan >
+	(SELECT AVG(wingspan)
+	FROM birds)
+AND height >
+	(SELECT AVG(height)
+	FROM birds)
+AND weight >
+	(SELECT AVG(weight)
+	FROM birds);
+    
+SELECT *
+FROM above_avg_birds;
+
+# Using subqueries, update rows of the above_avg_birds table 
+UPDATE above_avg_birds
+SET wingspan = 99, height = 99, weight = 99
+WHERE wingspan >
+	(SELECT AVG(wingspan)
+	FROM birds)
+AND height >
+	(SELECT AVG(height)
+	FROM birds)
+AND weight >
+	(SELECT AVG(weight)
+	FROM birds);
+    
+SELECT *
+FROM above_avg_birds;
+
+# Using subqueries, delete rows of data for any birds that have either a wingspan equal to the max wingspan or a height that is exactly the same as the max height for any bird in the table
+DELETE FROM above_avg_birds
+WHERE wingspan =
+	(SELECT MAX(wingspan)
+	FROM birds)
+OR height =
+	(SELECT MAX(height)
+	FROM birds);
+    

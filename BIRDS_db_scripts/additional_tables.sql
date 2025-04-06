@@ -63,3 +63,34 @@ ADD CONSTRAINT cameras_fk FOREIGN KEY (Sensor_Id) REFERENCES camera_sensors (Sen
 # Checking to make sure the cameras table updated
 SHOW CREATE TABLE cameras
 ;
+
+# Using subqueries, create a table of birds with above average height, weight, and wingspan
+CREATE TABLE above_avg_birds AS
+SELECT bird_id, bird_name, wingspan, height, weight
+FROM birds
+WHERE wingspan >
+	(SELECT AVG(wingspan)
+	FROM birds)
+AND height >
+	(SELECT AVG(height)
+	FROM birds)
+AND weight >
+	(SELECT AVG(weight)
+	FROM birds);
+    
+SELECT *
+FROM above_avg_birds;
+
+# Applying the concept of a subquery, create a new table called bird_appetizers base on the following: this new table should list the food_id and food_name, but only for food items associated with birds that are in the bottom 25 percentile of height
+CREATE TABLE bird_appetizers AS
+SELECT food_id, food_name
+FROM food
+WHERE food_id in
+	(SELECT food_id
+    FROM birds_food bf, birds b
+    WHERE bf.bird_id = b.bird_id
+    AND height <=
+    (SELECT MAX(height)*0.25
+    FROM birds));
+
+SELECT * FROM bird_appetizers;

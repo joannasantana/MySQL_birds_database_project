@@ -414,3 +414,57 @@ LEFT JOIN photographers mentees ON p.photographer_id = mentees.mentor_id
 GROUP BY mentor
 ORDER BY 2;
 
+# Using a subquery and an embedded subquery, return all birds that migrate to Mexico and eat fish
+SELECT bird_name
+FROM birds
+WHERE bird_id IN
+	(SELECT bird_id
+	FROM birds_migration bm, migration m
+	WHERE bm.migration_id = m.migration_id
+	AND m.migration_location = 'Mexico'
+AND bird_id IN
+	(SELECT bird_id
+	FROM birds_food bf, food f
+	WHERE bf.food_id = f.food_id
+	AND f.food_name = 'Fish')
+	);
+    
+# Using a correllated subquery, return only birds and their associated wingspan if they have a nickname containing 'eagle'
+SELECT bird_name, wingspan
+FROM birds b
+WHERE bird_id IN
+	(SELECT bird_id
+    FROM nicknames n
+    WHERE b.bird_id = n.bird_id
+    AND n.nickname LIKE '%eagle%');
+
+# Write a query with a subquery to create a list of birds and their wingspans for birds that have a wingspan less than the average wingspan in the birds table
+SELECT bird_id, bird_name, wingspan
+FROM birds
+WHERE wingspan <
+	(SELECT AVG(wingspan)
+    FROM birds
+    );
+    
+
+
+# Produce a list of birds and their associated migration locations for only birds that migrate to locations that have birds migrating there with an above average wingspan.
+SELECT bird_name, migration_location
+FROM birds b, migration m, birds_migration bm
+WHERE b.bird_id = bm.bird_id
+AND bm.migration_id = m.migration_id
+AND wingspan > 
+	(SELECT AVG(wingspan)
+	FROM birds);
+    
+# Use a subquery to find any food items that are eaten by the shortest bird in the database
+SELECT food_name
+FROM food
+WHERE food_id IN
+	(SELECT food_id
+    FROM birds_food bf, birds b
+    WHERE bf.bird_id = b.bird_id
+    AND height =
+		(SELECT MIN(height)
+        FROM birds)
+    );

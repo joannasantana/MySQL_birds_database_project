@@ -8,13 +8,16 @@ tables.sql and data.sql
 - Oracle code to create the tables was provided.
 - Original code edits to make it compatible with MySQL.
 
-additional_table_photography.sql
+additional_tables.sql
 - Original code demonstrating Data Definition Language (DDL)
-- Adds the following 4 tables to the database
+- Adds the following 4 tables related to photographyto the database
     - photographers 
     - photographer_cameras
     - cameras 
     - camera_sensors
+ - Adds the following tables to the database using subqueries
+    - above_average_birds
+    - bird_appetizers
 
 modifying_tables.sql
 - Original code demonstrating Data Definition Language (DDL).
@@ -31,6 +34,8 @@ data_manipulation.sql
     - Records include birdsbirds with wingspan over 70 inches.
     - The data in this table was manipulated using INSERT INTO, UPDATE, and DELETE. 
     - Demonstrated the consequences of not using a WHERE clause during updating and deleting.
+- above_avg_birds
+    - Truncates and then uses subqueries to INSERT, UPDATE, and DELETE new data
 
 managing_transactions.sql
 - Original code demonstrating how to manage transactions in MySQL by disabling autocommit mode and using savepoints, rollbacks, and commits. 
@@ -38,7 +43,7 @@ managing_transactions.sql
 - Adds two new tables (big_birds, locations2) to the database to use solely for transactional control demonstration.
 
 DQL_exercises.sql
-- A series of data querying demonstrating filtering, operators, joins, date functions, aggregate functions, grouping with rollup, etc
+- A series of data querying demonstrating filtering, operators, joins, date functions, aggregate functions, grouping with rollup, subqueries, embedded subqueries, correllated subqueries, etc
 
 restructuring_data.sql
 - Original code demonstrating how to create or alter strings using concatination, replacing characters, trimming and padding, and using coalesce to replace null values.
